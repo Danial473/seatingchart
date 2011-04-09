@@ -1,0 +1,59 @@
+<p id="notice">
+<%= notice %>
+</p>
+
+
+<div style="float:right ; border-style: solid; border-color: #000000; width: 80%; height:400px; margin-right:5%">
+    <h3 Style="Margin-left:45%">Classroom</h3>
+    <div style="border: thin solid #C0C0C0; margin: 5% 44% 5% 44%; height: 20px" id="professorplace">
+    </div>
+    <% count = 1 %>
+    <% @spots.each do |spot| %>
+    <% if ((count-1)/5)%2==0  %>
+       <% if count%5== 0 %> 
+           <% if spot.sessionid != nil %> 
+	<a href="/spots/<%= spot.id %>" class="student"><%= User.find(spot.sessionid).name %></a>
+           <% else %>
+	<a href="/spots/<%= spot.id %>" class="student"> * </a>
+            <% end %>
+          </div>
+       <% elsif count%5== 1 %>
+           <div style="border: thin solid #C0C0C0; float:left; margin-left: 5%; margin-bottom: 1%;  width:40%">
+           <% if spot.sessionid != nil %>
+	<a href="/spots/<%= spot.id %>" class="student"><%= User.find(spot.sessionid).name %></a>
+           <% else %>
+	<a href="/spots/<%= spot.id %>" class="student"> * </a>
+           <% end %>
+      <% else %>
+	<% if spot.sessionid != nil %>
+		<a href="/spots/<%= spot.id %>" class="student"><%= User.find(spot.sessionid).name %></a>
+       	<% else %>
+		<a href="/spots/<%= spot.id %>" class="student"> * </a>
+	<% end %>
+      <% end %>
+    <% else %>
+       <% if count%5== 0 %> 
+           <% if spot.sessionid != nil %>
+           	<a href="/spots/<%= spot.id %>" class="student"><%= User.find(spot.sessionid).name %></a>
+           <% else %>
+	<a href="/spots/<%= spot.id %>" class="student"> * </a>
+           <% end %>
+           </div>
+       <% elsif count%5== 1 %>
+           <div style="border: thin solid #C0C0C0; float:right; margin-right: 5%; margin-bottom: 1%;  width:40%">
+           <% if spot.sessionid != nil %>
+	<a href="/spots/<%= spot.id %>" class="student"><%= User.find(spot.sessionid).name %></a>
+           <% else %>
+	<a href="/spots/<%= spot.id %>" class="student"> * </a>
+           <% end %>
+       <% else %>
+           <% if spot.sessionid != nil %>
+           	<a href="/spots/<%= spot.id %>" class="student"><%= User.find(spot.sessionid).name %></a>
+           <% else %>
+	<a href="/spots/<%= spot.id %>" class="student"> * </a>
+           <% end %>
+       <% end %>
+    <% end %>
+     <% count +=1 %>
+    <% end %>
+</div>
